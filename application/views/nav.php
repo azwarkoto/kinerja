@@ -92,9 +92,9 @@ if($this->session->userdata('kodepenilai')==""){
                         <li>
                             <a href="#"><i class="fa fa-table fa-fw"></i> Master Sekolah<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <!-- <li>
+                                <li>
                                     <a href="<?= base_url() ?>pangkat">Pangkat</a>
-                                </li> -->
+                                </li>
                                 <li>
                                     <a href="<?= base_url() ?>jabatan">Jabatan</a>
                                 </li>
@@ -104,27 +104,27 @@ if($this->session->userdata('kodepenilai')==""){
                                 <li>
                                     <a href="<?= base_url() ?>guru">Guru</a>
                                 </li>
-                                <!-- <li>
+                                <li>
                                     <a href="<?= base_url() ?>sekolah">Sekolah</a>
-                                </li> -->
-                                <!-- <li>
+                                </li>
+                                <li>
                                     <a href="<?= base_url() ?>petugasdinas">Petugas Dinas</a>
-                                </li> -->
-                                <!-- <li>
+                                </li>
+                                <li>
                                     <a href="<?= base_url() ?>penilai">Penilai</a>
-                                </li> -->
-                                <!-- <li>
+                                </li>
+                                <li>
                                     <a href="<?= base_url() ?>penilaian">Penilaian</a>
-                                </li> -->
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <!-- <li>
+                        <li>
                             <a href="<?= base_url() ?>nilai"><i class="fa fa-table fa-fw"></i> Penilaian</a>
-                        </li> -->
-                        <!-- <li>
+                        </li>
+                        <li>
                             <a href="<?= base_url() ?>laporan"><i class="fa fa-sitemap fa-fw"></i> Laporan</a>
-                        </li> -->
+                        </li>
                         <!-- <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Website Under Contruction</a>
 
