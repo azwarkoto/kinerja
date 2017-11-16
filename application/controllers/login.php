@@ -11,9 +11,10 @@ class Login extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('login');
+		$kode = "";
 		//var_dump($this->input->post('login'));
 		if($this->input->post('login')){
-			
+
 			$user=$this->input->post("username");
 			$psswd=$this->input->post("psswd");
 			if ($user=='admin' && $psswd='admin') {
@@ -21,7 +22,7 @@ class Login extends CI_Controller {
 			}else{
 				$data=$this->M_penilai->selectByAll();
 					foreach ($data as $row) {
-					
+
 					if($row->username==$user){
 						//var_dump($row->email);
 						if($row->password==$psswd){
@@ -30,21 +31,21 @@ class Login extends CI_Controller {
 							$kode=$row->kodepenilai;
 						}
 					}
-					
+
 				}
 			}
-			
-		}
 
 		if(isset($status) and $status==TRUE){
 			if($kode==""){$kode="PNL0000000";}
 				$sessionku = array('username' => $user,'kodepenilai'=>$kode);
 				$this->session->set_userdata($sessionku);
 				redirect('home','refresh');
+		}else{
+			echo "<script>alert('Login gagal')</script>";
 		}
-		//var_dump($status);
-		
-			
+}		//var_dump($status);
+
+
 	}
 	public function logout(){
 		$this->session->sess_destroy();
@@ -55,7 +56,7 @@ class Login extends CI_Controller {
 			redirect('login');
 		}
 	}
-	
+
 
 }
 
