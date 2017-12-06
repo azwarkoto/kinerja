@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.3.11
 -- http://www.phpmyadmin.net
 --
--- Host: localhost:3306
--- Generation Time: Jul 18, 2016 at 05:14 PM
--- Server version: 10.1.9-MariaDB-log
--- PHP Version: 5.6.16
+-- Host: 127.0.0.1
+-- Generation Time: 06 Des 2017 pada 09.17
+-- Versi Server: 5.6.24
+-- PHP Version: 5.6.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `projectkinerja`
@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `golongan`
+-- Struktur dari tabel `golongan`
 --
 
-CREATE TABLE `golongan` (
+CREATE TABLE IF NOT EXISTS `golongan` (
   `kodegolongan` varchar(10) NOT NULL,
   `namagolongan` varchar(70) NOT NULL,
   `nilaiakk` int(11) NOT NULL COMMENT 'angka kredit kumulatif minimal',
@@ -36,7 +36,7 @@ CREATE TABLE `golongan` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `golongan`
+-- Dumping data untuk tabel `golongan`
 --
 
 INSERT INTO `golongan` (`kodegolongan`, `namagolongan`, `nilaiakk`, `nilaiakpkb`, `nilaiakp`, `jwm`) VALUES
@@ -52,10 +52,10 @@ INSERT INTO `golongan` (`kodegolongan`, `namagolongan`, `nilaiakk`, `nilaiakpkb`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `guru`
+-- Struktur dari tabel `guru`
 --
 
-CREATE TABLE `guru` (
+CREATE TABLE IF NOT EXISTS `guru` (
   `kodeguru` varchar(10) NOT NULL,
   `nip` varchar(20) NOT NULL,
   `nuptk` varchar(20) NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE `guru` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Tabel Guru';
 
 --
--- Dumping data for table `guru`
+-- Dumping data untuk tabel `guru`
 --
 
 INSERT INTO `guru` (`kodeguru`, `nip`, `nuptk`, `nrg`, `nama`, `tempatlahir`, `tanggallahir`, `kodepangkat`, `kodejabatan`, `kodegolongan`, `tmtguru`, `jeniskelamin`, `pendidikan`, `program`, `jam`, `masakerja`, `jenisguru`) VALUES
@@ -87,17 +87,17 @@ INSERT INTO `guru` (`kodeguru`, `nip`, `nuptk`, `nrg`, `nama`, `tempatlahir`, `t
 -- --------------------------------------------------------
 
 --
--- Table structure for table `indikator`
+-- Struktur dari tabel `indikator`
 --
 
-CREATE TABLE `indikator` (
+CREATE TABLE IF NOT EXISTS `indikator` (
   `kodeindikator` varchar(10) NOT NULL,
   `kodekompetensi` varchar(10) NOT NULL,
   `isiindikator` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='berisi indikator indikator dengan beberapa kriteria';
 
 --
--- Dumping data for table `indikator`
+-- Dumping data untuk tabel `indikator`
 --
 
 INSERT INTO `indikator` (`kodeindikator`, `kodekompetensi`, `isiindikator`) VALUES
@@ -253,16 +253,16 @@ INSERT INTO `indikator` (`kodeindikator`, `kodekompetensi`, `isiindikator`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jabatan`
+-- Struktur dari tabel `jabatan`
 --
 
-CREATE TABLE `jabatan` (
+CREATE TABLE IF NOT EXISTS `jabatan` (
   `kodejabatan` varchar(10) NOT NULL,
   `namajabatan` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='penata muda dlll';
 
 --
--- Dumping data for table `jabatan`
+-- Dumping data untuk tabel `jabatan`
 --
 
 INSERT INTO `jabatan` (`kodejabatan`, `namajabatan`) VALUES
@@ -275,17 +275,17 @@ INSERT INTO `jabatan` (`kodejabatan`, `namajabatan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenispenilaian`
+-- Struktur dari tabel `jenispenilaian`
 --
 
-CREATE TABLE `jenispenilaian` (
+CREATE TABLE IF NOT EXISTS `jenispenilaian` (
   `kodejenis` varchar(10) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `keterangan` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='menentukan guru matpel / bk / tambahan jabatan';
 
 --
--- Dumping data for table `jenispenilaian`
+-- Dumping data untuk tabel `jenispenilaian`
 --
 
 INSERT INTO `jenispenilaian` (`kodejenis`, `nama`, `keterangan`) VALUES
@@ -295,17 +295,17 @@ INSERT INTO `jenispenilaian` (`kodejenis`, `nama`, `keterangan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori`
+-- Struktur dari tabel `kategori`
 --
 
-CREATE TABLE `kategori` (
+CREATE TABLE IF NOT EXISTS `kategori` (
   `kodekategori` varchar(10) NOT NULL,
   `namakategori` varchar(30) NOT NULL,
   `kodejenis` varchar(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='contohnya pedagogik';
 
 --
--- Dumping data for table `kategori`
+-- Dumping data untuk tabel `kategori`
 --
 
 INSERT INTO `kategori` (`kodekategori`, `namakategori`, `kodejenis`) VALUES
@@ -321,17 +321,17 @@ INSERT INTO `kategori` (`kodekategori`, `namakategori`, `kodejenis`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kompetensi`
+-- Struktur dari tabel `kompetensi`
 --
 
-CREATE TABLE `kompetensi` (
+CREATE TABLE IF NOT EXISTS `kompetensi` (
   `kodekompetensi` varchar(10) NOT NULL,
   `kodekategori` varchar(10) NOT NULL,
   `namakompetensi` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kompetensi`
+-- Dumping data untuk tabel `kompetensi`
 --
 
 INSERT INTO `kompetensi` (`kodekompetensi`, `kodekategori`, `namakompetensi`) VALUES
@@ -370,10 +370,24 @@ INSERT INTO `kompetensi` (`kodekompetensi`, `kodekategori`, `namakompetensi`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nilai`
+-- Struktur dari tabel `komplain`
 --
 
-CREATE TABLE `nilai` (
+CREATE TABLE IF NOT EXISTS `komplain` (
+  `id` int(11) NOT NULL,
+  `kodeguru` varchar(10) NOT NULL,
+  `kodepenilai` varchar(10) NOT NULL,
+  `gambar` varchar(100) NOT NULL,
+  `status` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `nilai`
+--
+
+CREATE TABLE IF NOT EXISTS `nilai` (
   `kodepenilaian` varchar(10) NOT NULL,
   `kodeguru` varchar(10) NOT NULL,
   `kodeindikator` varchar(10) NOT NULL,
@@ -381,7 +395,7 @@ CREATE TABLE `nilai` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nilai`
+-- Dumping data untuk tabel `nilai`
 --
 
 INSERT INTO `nilai` (`kodepenilaian`, `kodeguru`, `kodeindikator`, `nilai`) VALUES
@@ -402,21 +416,27 @@ INSERT INTO `nilai` (`kodepenilaian`, `kodeguru`, `kodeindikator`, `nilai`) VALU
 ('PNL0000001', 'GRU0000003', 'IDK0000006', '2'),
 ('PNL0000001', 'GRU0000002', 'IDK0000082', '2'),
 ('PNL0000001', 'GRU0000002', 'IDK0000083', '2'),
-('PNL0000001', 'GRU0000002', 'IDK0000084', '2');
+('PNL0000001', 'GRU0000002', 'IDK0000084', '2'),
+('PNL0000001', 'GRU0000001', 'IDK0000007', '1'),
+('PNL0000001', 'GRU0000001', 'IDK0000008', '1'),
+('PNL0000001', 'GRU0000001', 'IDK0000009', '2'),
+('PNL0000001', 'GRU0000001', 'IDK0000010', '1'),
+('PNL0000001', 'GRU0000001', 'IDK0000011', '1'),
+('PNL0000001', 'GRU0000001', 'IDK0000012', '1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pangkat`
+-- Struktur dari tabel `pangkat`
 --
 
-CREATE TABLE `pangkat` (
+CREATE TABLE IF NOT EXISTS `pangkat` (
   `kodepangkat` varchar(10) NOT NULL,
   `namapangkat` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pangkat`
+-- Dumping data untuk tabel `pangkat`
 --
 
 INSERT INTO `pangkat` (`kodepangkat`, `namapangkat`) VALUES
@@ -433,10 +453,10 @@ INSERT INTO `pangkat` (`kodepangkat`, `namapangkat`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penilai`
+-- Struktur dari tabel `penilai`
 --
 
-CREATE TABLE `penilai` (
+CREATE TABLE IF NOT EXISTS `penilai` (
   `kodepenilai` varchar(10) NOT NULL,
   `kodeguru` varchar(10) NOT NULL,
   `nomorsk` varchar(30) NOT NULL,
@@ -448,7 +468,7 @@ CREATE TABLE `penilai` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Tabel Penilai / Guru yang menilai';
 
 --
--- Dumping data for table `penilai`
+-- Dumping data untuk tabel `penilai`
 --
 
 INSERT INTO `penilai` (`kodepenilai`, `kodeguru`, `nomorsk`, `tanggalsk`, `berlaku`, `keterangan`, `username`, `password`) VALUES
@@ -457,10 +477,10 @@ INSERT INTO `penilai` (`kodepenilai`, `kodeguru`, `nomorsk`, `tanggalsk`, `berla
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penilaian`
+-- Struktur dari tabel `penilaian`
 --
 
-CREATE TABLE `penilaian` (
+CREATE TABLE IF NOT EXISTS `penilaian` (
   `kodepenilaian` varchar(10) NOT NULL,
   `tanggal` date NOT NULL,
   `periode` varchar(30) NOT NULL,
@@ -470,7 +490,7 @@ CREATE TABLE `penilaian` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `penilaian`
+-- Dumping data untuk tabel `penilaian`
 --
 
 INSERT INTO `penilaian` (`kodepenilaian`, `tanggal`, `periode`, `kodedinas`, `kodepenilai`, `tipe`) VALUES
@@ -479,10 +499,10 @@ INSERT INTO `penilaian` (`kodepenilaian`, `tanggal`, `periode`, `kodedinas`, `ko
 -- --------------------------------------------------------
 
 --
--- Table structure for table `petugasdinas`
+-- Struktur dari tabel `petugasdinas`
 --
 
-CREATE TABLE `petugasdinas` (
+CREATE TABLE IF NOT EXISTS `petugasdinas` (
   `kodedinas` varchar(10) NOT NULL,
   `nama_petugas` varchar(30) NOT NULL,
   `nip` varchar(20) NOT NULL,
@@ -490,7 +510,7 @@ CREATE TABLE `petugasdinas` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='table petugas dinas / asesor';
 
 --
--- Dumping data for table `petugasdinas`
+-- Dumping data untuk tabel `petugasdinas`
 --
 
 INSERT INTO `petugasdinas` (`kodedinas`, `nama_petugas`, `nip`, `keterangan`) VALUES
@@ -499,10 +519,10 @@ INSERT INTO `petugasdinas` (`kodedinas`, `nama_petugas`, `nip`, `keterangan`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sekolah`
+-- Struktur dari tabel `sekolah`
 --
 
-CREATE TABLE `sekolah` (
+CREATE TABLE IF NOT EXISTS `sekolah` (
   `kode_sekolah` varchar(10) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `telp` varchar(30) NOT NULL,
@@ -516,7 +536,7 @@ CREATE TABLE `sekolah` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Tabel Sekolah';
 
 --
--- Dumping data for table `sekolah`
+-- Dumping data untuk tabel `sekolah`
 --
 
 INSERT INTO `sekolah` (`kode_sekolah`, `nama`, `telp`, `kelurahan`, `kecamatan`, `kabupaten`, `provinsi`, `alamat`, `idguru`, `status`) VALUES
@@ -569,6 +589,12 @@ ALTER TABLE `kompetensi`
   ADD PRIMARY KEY (`kodekompetensi`);
 
 --
+-- Indexes for table `komplain`
+--
+ALTER TABLE `komplain`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `nilai`
 --
 ALTER TABLE `nilai`
@@ -604,6 +630,15 @@ ALTER TABLE `petugasdinas`
 ALTER TABLE `sekolah`
   ADD PRIMARY KEY (`kode_sekolah`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `komplain`
+--
+ALTER TABLE `komplain`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

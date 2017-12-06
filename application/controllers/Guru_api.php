@@ -12,21 +12,22 @@ class Guru_api extends REST_Controller {
     function index_get() {
         $id = $this->get('id');
 
-//        if ($id == '') {
+       if ($id == '') {
 //            $this->db->join('penilaian', 'penilaian.kodepenilaian = nilai.kodepenilaian', 'left');
 //            $this->db->join('guru', 'guru.kodeguru = nilai.kodeguru', 'left');
-            $data = $this->db->get('guru')->result();
+            $data['guru'] = $this->db->get('guru')->result();
+            $data['jumlah'] = $this->db->count_all_results();
             // $data = array("status"=>"0");
 
-//        } else {
+       } else {
 //            $this->db->join('penilaian', 'penilaian.kodepenilaian = nilai.kodepenilaian', 'left');
 //            $this->db->join('guru', 'guru.kodeguru = nilai.kodeguru', 'left');
-//            $data = $this->db->get('nilai')->result();
-//            $this->db->where('kodeguru', $id);
-//            $data = $this->db->get('nilai')->result();
-//        }
+            $this->db->where('kodeguru', $id);
+           $data['guru'] = $this->db->get('guru')->result();
+           $data['jumlah'] = $this->db->count_all_results();
 
-
+//            $data = $this->db->get('nilai')->result();
+       }
 
         $this->response($data, 200);
     }
@@ -44,7 +45,7 @@ class Guru_api extends REST_Controller {
             'kodepangkat' => $this->input->post('kodepangkat'),
             'kodejabatan' => $this->input->post('kodejabatan'),
             'kodegolongan' => $this->input->post('kodegolongan'),
-            'tmtguru' => $this->input->post('tmtguru'),
+            'tmtguru' => $this->input->post('tmtgu  ru'),
             'jeniskelamin' => $this->input->post('jeniskelamin'),
             'pendidikan' => $this->input->post('pendidikan'),
             'program' => $this->input->post('program'),

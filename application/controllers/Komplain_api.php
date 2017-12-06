@@ -2,7 +2,7 @@
 
 require APPPATH . '/libraries/REST_Controller.php';
 
-class Nilai_api extends REST_Controller {
+class Komplain_api extends REST_Controller {
 
     function __construct($config = 'rest') {
         parent::__construct($config);
@@ -13,18 +13,18 @@ class Nilai_api extends REST_Controller {
         $id = $this->get('id');
 
         if ($id == '') {
-            $this->db->join('penilai', 'penilai.kodepenilai = nilai.kodepenilaian', 'left');
-            $this->db->join('guru', 'guru.kodeguru = nilai.kodeguru', 'left');
-            // $data['jumlah'] = $this->db->count_all_results();
-            $data['nilai'] = $this->db->get('nilai')->result();
+            // $this->db->join('penilai', 'penilai.kodepenilai = nilai.kodepenilaian', 'left');
+            // $this->db->join('guru', 'guru.kodeguru = nilai.kodeguru', 'left');
+            $data['jumlah'] = $this->db->count_all_results();
+            $data['komplain'] = $this->db->get('komplain')->result();
             // $data = array("status"=>"0");
 
         } else {
-            $this->db->where('nilai.kodeguru', $id);
-            $this->db->join('penilai', 'penilai.kodepenilai = nilai.kodepenilaian', 'left');
-            $this->db->join('guru', 'guru.kodeguru = nilai.kodeguru', 'left');
-            // $data['jumlah'] = $this->db->count_all_results();
-            $data['nilai'] = $this->db->get('nilai')->result();
+            $this->db->where('komplain.id', $id);
+            // $this->db->join('penilai', 'penilai.kodepenilai = nilai.kodepenilaian', 'left');
+            // $this->db->join('guru', 'guru.kodeguru = nilai.kodeguru', 'left');
+            $data['jumlah'] = $this->db->count_all_results();
+            $data['komplain'] = $this->db->get('komplain')->result();
 
         }
 
