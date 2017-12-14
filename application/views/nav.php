@@ -125,6 +125,9 @@ if($this->session->userdata('kodepenilai')==""){
                         <li>
                             <a href="<?= base_url() ?>laporan"><i class="fa fa-sitemap fa-fw"></i> Laporan</a>
                         </li>
+                        <li>
+                            <a href="<?= base_url() ?>komplain"><i class="fa fa-sitemap fa-fw"></i> Komplain</a>
+                        </li>
                         <!-- <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Website Under Contruction</a>
 

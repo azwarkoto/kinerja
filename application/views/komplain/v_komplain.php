@@ -47,9 +47,9 @@
                 <tr>
 			<td width="80px"><?php echo ++$start ?></td>
 			<td><?php echo $komplain->kodeguru ?></td>
-			<td><?php echo $komplain>->kodepenilai ?></td>
-			<td><?php echo $komplain>->gambar ?></td>
-			<td><?php echo $komplain>->status ?></td>
+			<td><?php echo $komplain->kodepenilai ?></td>
+			<td><?php echo $komplain->gambar ?></td>
+			<td><?php echo $komplain->status ?></td>
 			<td style="text-align:center" width="230px">
 				<?php
 				echo anchor(site_url('komplain/view/'.$komplain->id),'Lihat','class="btn btn-info"');

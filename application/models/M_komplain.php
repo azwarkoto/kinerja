@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class M_guru extends CI_Model
+class M_komplain extends CI_Model
 {
 
     public $table = 'komplain';
