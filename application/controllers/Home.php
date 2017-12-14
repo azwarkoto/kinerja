@@ -12,16 +12,17 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('nav');	
-		$this->load->view('home');	
-		$this->load->view('foot');	
+		$this->load->view('nav');
+		
+		$this->load->view('home');
+		$this->load->view('foot');
 
 	}
 	public function coba()
 	{
-		$this->load->view('nav');	
-		$this->load->view('coba');	
-		$this->load->view('foot');	
+		$this->load->view('nav');
+		$this->load->view('coba');
+		$this->load->view('foot');
 
 	}
 

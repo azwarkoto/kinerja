@@ -1,7 +1,8 @@
 <?php
-if($this->session->userdata('kodepenilai')==""){
-    redirect('login','refresh');
-}
+// if($this->session->userdata('kodepenilai')==""){
+//     redirect('Login','refresh');
+//     echo "<script>alert('".$this->session->userdata('kodepenilai')."');</script>";
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">

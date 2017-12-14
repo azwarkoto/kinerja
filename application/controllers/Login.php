@@ -6,10 +6,12 @@ class Login extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('M_penilai');
+		$this->load->library('session');
 	}
 
 	public function index()
 	{
+		// var_dump($_SESSION['username']);
 		$this->load->view('login');
 		$kode = "";
 		//var_dump($this->input->post('login'));
@@ -19,6 +21,7 @@ class Login extends CI_Controller {
 			$psswd=$this->input->post("psswd");
 			if ($user=='admin' && $psswd='admin') {
 				$status=TRUE;
+
 			}else{
 				$data=$this->M_penilai->selectByAll();
 					foreach ($data as $row) {
@@ -39,7 +42,9 @@ class Login extends CI_Controller {
 			if($kode==""){$kode="PNL0000000";}
 				$sessionku = array('username' => $user,'kodepenilai'=>$kode);
 				$this->session->set_userdata($sessionku);
-				redirect('home','refresh');
+				 echo "<script>alert('".$_SESSION['username']."');</script>";
+				redirect('Home','refresh');
+				//  echo "<script>alert('".$_SESSION['username']."');</script>";
 		}else{
 			echo "<script>alert('Login gagal')</script>";
 		}
