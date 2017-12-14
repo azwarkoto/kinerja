@@ -15,16 +15,18 @@ class Nilai_api extends REST_Controller {
         if ($id == '') {
             $this->db->join('penilai', 'penilai.kodepenilai = nilai.kodepenilaian', 'left');
             $this->db->join('guru', 'guru.kodeguru = nilai.kodeguru', 'left');
-            // $data['jumlah'] = $this->db->count_all_results();
+
             $data['nilai'] = $this->db->get('nilai')->result();
+            $data['jumlah'] = $this->db->count_all_results();
             // $data = array("status"=>"0");
 
         } else {
             $this->db->where('nilai.kodeguru', $id);
             $this->db->join('penilai', 'penilai.kodepenilai = nilai.kodepenilaian', 'left');
             $this->db->join('guru', 'guru.kodeguru = nilai.kodeguru', 'left');
-            // $data['jumlah'] = $this->db->count_all_results();
+
             $data['nilai'] = $this->db->get('nilai')->result();
+            $data['jumlah'] = $this->db->count_all_results();
 
         }
 
